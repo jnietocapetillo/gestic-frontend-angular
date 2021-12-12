@@ -1,0 +1,27 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+label {
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 18px;
+    color: darkcyan;
+    width: 200px;
+}
+
+span{
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 18px;
+    color: darkcyan;
+}
+
+.incidencia{
+    width: 60px;
+}
+
+.para{
+    width: 250px;
+}
+
+.fecha{
+    width: 200px;
+}

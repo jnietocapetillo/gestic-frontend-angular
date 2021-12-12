@@ -1,0 +1,35 @@
+.tamano{
+    min-height: calc(100vh - 100px - 250px);
+}
+table {
+    font-family: 'Dosis', sans-serif;    
+}
+
+table th{
+    color: #215f87 ;
+}
+
+table td{
+    color: #51616c ;
+}
+i{
+    padding-left: 4px;
+}
+
+span{
+    color: #215f87 ;
+    font-family: 'Yaldevi', sans-serif;
+}
+img {
+    margin-left: 8px;
+}
+label{
+    width: 100px;
+    color: #215f87 ;
+    font-family: 'Yaldevi', sans-serif;
+}
+h5{
+    font-family: 'Yaldevi', sans-serif;
+    color: #426275 ;
+    letter-spacing: 5px;
+}

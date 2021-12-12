@@ -1,0 +1,206 @@
+<div class="tamano">
+<div class="container-fluid cabecera pt-3 pb-3">
+    <div class="d-flex flex-row justify-content-center">
+        <img src="./assets/inicio.png" width="105px" height="100px">
+    </div>
+</div>
+
+<form [formGroup]="formAgregarUsuario" (ngSubmit)="agregarUsuario()" novalidate>
+<div class="container d-flex justify-content-center">
+    <div class="card text-dark bg-light my-5" style="max-width: 70rem;">
+    <div class="titulo">Nuevo Usuario</div>
+        <p>Los campos con * son oblidatorios</p>
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="p-2 w-50">
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-card"></i>&nbsp;&nbsp;<label for="nombre" class="font-weight-light">Nombre <span class="obligatorio"> * </span>: </label>   
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="nombre" id="nombre" formControlName="nombre" [ngClass]="{'is-invalid':!formAgregarUsuario.get('nombre')?.valid}">
+                                    <div class="invalid-feedback">El campo es requerido y no debe tener digitos</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-card"></i>&nbsp;&nbsp;<label for="apellidos" class="font-weight-light">Apellidos <span class="obligatorio"> * </span>: </label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="apellidos" id="apellidos" formControlName="apellidos" [ngClass]="{'is-invalid':!formAgregarUsuario.get('apellidos')?.valid}">
+                                    <div class="invalid-feedback">El campo es requerido y no debe tener digitos</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-card"></i>&nbsp;&nbsp;<label for="dni" class="font-weight-light"> DNI <span class="obligatorio"> * </span>: </label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="dni" id="dni" formControlName="dni" [ngClass]="{'is-invalid':!formAgregarUsuario.get('dni')?.valid}">
+                                    <div class="invalid-feedback">El dni es requerido y formato correcto</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 w-50">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <div class="p-2">
+                            <img src="./assets/usuarioM.png">
+                        </div>
+                        <div class="p-2">
+                            <label for="avatar" class="form-label textoImagen">Adjuntar imagen:</label>
+                            <input class="form-control" type="file" id="avatar" name="avatar" accept="image/png,image/jpeg,image/jpg" (change)="subirImagen($event)" formControlName="avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-column justify-content-center">
+                <h5 class="titulo">Acceso</h5>
+                <div class="p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <i class="far fa-envelope"></i>&nbsp;&nbsp;<label for="email" class="font-weight-light">Email <span class="obligatorio"> * </span>: </label>   
+                        </div>
+                        <div class="col-auto">
+                            <input type="email" class="form-control dimension" name="email" id="email" formControlName="email" [ngClass]="{'is-invalid':!formAgregarUsuario.get('email')?.valid}">
+                            <div class="invalid-feedback">Debe introducir un email correcto</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-lock"></i>&nbsp;&nbsp;<label for="password" class="font-weight-light">Password <span class="obligatorio"> * </span>: </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="password" class="form-control dimension" name="password" id="password" formControlName="password" placeholder="min 8 caracteres, A a 0-9" [ngClass]="{'is-invalid':!formAgregarUsuario.get('password')?.valid}">
+                            <div class="invalid-feedback">La contraseña debe tener longitu minima 8, debe contener mayúsculas, minúsculas y digitos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-lock"></i>&nbsp;&nbsp;<label for="passwordR" class="font-weight-light">Repite password <span class="obligatorio"> * </span>: </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="password" class="form-control dimension" name="passwordR" id="passwordR" formControlName="passwordR" [ngClass]="{'is-invalid':!formAgregarUsuario.get('passwordR')?.valid}">
+                            <div class="invalid-feedback">La contraseña debe tener longitu minima 8, debe contener mayúsculas, minúsculas y digitos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h5 class="titulo">Perfil</h5>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="p-2 w-50">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="departamento" class="font-weight-light">Departamento <span class="obligatorio"> * </span>: </label>   
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select dimension" name="idDepartamento" id="idDepartamento" formControlName="idDepartamento" [ngClass]="{'is-invalid':!formAgregarUsuario.get('idDepartamento')?.valid}">
+                                <option *ngFor="let departamento of ListaDepartamentos" value="{{departamento.id}}">{{departamento.nombre}}</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un departamento</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 w-50">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="perfil" class="font-weight-light">Tipo <span class="obligatorio"> * </span>: </label>   
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select dimension" name="idPerfil" id="idPerfil" formControlName="idPerfil" [ngClass]="{'is-invalid':!formAgregarUsuario.get('idPerfil')?.valid}">
+                                <option *ngFor="let perfil of ListaPerfiles" value="{{perfil.id}}">{{perfil.nombre}}</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un perfil de usuario</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h5 class="titulo">Contacto</h5>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;<label for="movil" class="font-weight-light">Número móvil <span class="obligatorio"> * </span>: </label>   
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control dimension" name="movil" id="movil" formControlName="movil" [ngClass]="{'is-invalid':!formAgregarUsuario.get('movil')?.valid}">
+                            <div class="invalid-feedback">Introduzca número de teléfono y formato correcto</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="p-2">
+                    <div class="d-flex flex row">
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-book"></i>&nbsp;&nbsp;<label for="domicilio" class="font-weight-light">Domicilio: </label>   
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="domicilio" id="domicilio" formControlName="domicilio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-book"></i>&nbsp;&nbsp;<label for="provincia" class="font-weight-light">Provincia: </label>   
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="municipio" id="municipio" formControlName="municipio">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="d-flex flex row">
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-book"></i>&nbsp;&nbsp;<label for="localidad" class="font-weight-light">Localidad: </label>   
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="localidad" id="localidad" formControlName="localidad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <i class="far fa-address-book"></i>&nbsp;&nbsp;<label for="codigo_postal" class="font-weight-light">Codigo Postal: </label>   
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control dimension" name="codigo_postal" id="codigo_postal" formControlName="codigo_postal" [ngClass]="{'is-invalid':!formAgregarUsuario.get('codigo_postal')?.valid}">
+                                    <div class="invalid-feedback">Formato de código postal no válido</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex row justify-content-center">
+                <button type="submit" class="btn btn-success w-25" [disabled] = "formAgregarUsuario.invalid">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+</div>

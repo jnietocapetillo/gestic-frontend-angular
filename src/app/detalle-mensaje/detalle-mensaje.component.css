@@ -1,0 +1,22 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+.fondo {
+    background-color: rgb(108, 146, 133);
+}
+
+.titulo{
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 18px;
+    color:rgb(23, 32, 30);
+}
+.dato{
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 18px;
+    color:rgb(22, 141, 115);
+}
+
+h3{
+    font-family: 'Yaldevi', sans-serif;
+    color:rgb(108, 146, 133);
+}

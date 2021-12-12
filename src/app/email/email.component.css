@@ -1,0 +1,20 @@
+.contenido{
+    font-family: 'Nunito', sans-serif;
+}
+.fondo{
+    background-color: #b8d3d3 ;
+}
+
+hr{
+    height: 2px;
+    color: rgb(94, 94, 94);
+}
+input{
+    border: 1px solid rgb(147, 209, 137);
+}
+textarea{
+    border: 1px solid rgb(78, 112, 73);
+}
+select{
+    border: 1px solid rgb(147, 209, 137);
+}

@@ -1,0 +1,164 @@
+
+<div *ngIf="usuarioInyectado.usuario.hayUsuario == true" class="encabezado">
+    <div class="izquierda">
+      <a routerLink="usuarios">
+        <img [src]="logo" width="100" height="100" alt="">
+        <img [src]="titulo" width="117px" height="105px" alt=""></a>
+        <div class="titulo d-none d-lg-block">
+        Gestion Incidencias
+        </div>
+      
+    </div>
+    <div class="derecha">
+      <div class="derecha_1 d-none d-lg-block"></div>
+      <div class="derecha_2">
+        <div *ngIf="usuarioInyectado.usuario.hayUsuario == true" class="d-flex flex-column justify-content-end align-item-end">
+            <div class="p-2 d-flex justify-content-center">
+                <img [src]="imagenUsuario" class="d-none d-lg-block" width="50px" height="50px" alt="">      
+            </div>
+            <div class="p-2 d-flex justify-content-center">
+              <span class="nombreUsuario"> {{usuarioInyectado.usuario.nombre}}</span>  
+            </div>
+            <div class="p-2 d-flex justify-content-center">
+              <span class="nombreUsuario">( {{ usuarioInyectado.usuario.nombrePerfil }} )</span>
+            </div>
+        </div>
+      </div>
+    </div>    
+</div>
+
+
+
+<!-- menu principal segun el tipo de usuario usuario y si esta logueado o no -->
+<div *ngIf="usuarioInyectado.usuario.hayUsuario == true">
+<div *ngIf="usuarioInyectado.usuario.idPerfil == 2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mis datos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/usuario/detalle">Detalles perfil</a></li>
+            <li><a class="dropdown-item" href="/reset">Actualizar contraseña</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Incidencias
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink='addincidencia'>Abrir Incidencia</a></li>
+            <li><a class="dropdown-item" routerLink="incidencias">Listado incidencias</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/email">Mensajería</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a routerLink="/" ><img src="./assets/logout.png" width="30px" height="30px" (click)='limpiarUsuario()'></a>
+      </span>
+    </div>
+  </div>
+</nav>
+</div>
+
+<!-- menu principal segun el tipo de usuario tecnico y si esta logueado o no -->
+<div *ngIf="usuarioInyectado.usuario.hayUsuario == true">
+<div *ngIf="usuarioInyectado.usuario.idPerfil == 5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mis datos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/usuario/detalle">Detalles perfil</a></li>
+            <li><a class="dropdown-item" href="#">Actualizar contraseña</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Incidencias
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink='addincidencia'>Abrir Incidencia</a></li>
+            <li><a class="dropdown-item" routerLink="incidencias/asignadas">Incidencias asignadas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/email">Mensajería</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a routerLink="/" ><img src="./assets/logout.png" width="30px" height="30px" (click)='limpiarUsuario()'></a>
+      </span>
+    </div>
+  </div>
+</nav>
+</div>
+
+<!-- menu principal segun el tipo de usuario Admnistrador y si esta logueado o no -->
+<div *ngIf="usuarioInyectado.usuario.idPerfil==1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="incidencias">Incidencias</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Usuarios
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/usuario/detalle">Mis datos de usuario</a></li>
+            <li><a class="dropdown-item" routerLink="/usuarios">Listado Usuarios</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Mensajería
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/email">Nuevo mensaje</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Configuración
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" routerLink="/departamentos">Departamentos</a></li>
+            <li><a class="dropdown-item" routerLink="/perfiles">Perfiles</a></li>
+            <li><a class="dropdown-item" routerLink="/usuario/desactivar">Desactivar Usuario</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logs">Logs</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        <a routerLink="/" ><img src="./assets/logout.png" width="30px" height="30px" (click)='limpiarUsuario()'></a>
+      </span>
+    </div>
+  </div>
+</nav>
+</div>
+</div>
+
+

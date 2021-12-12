@@ -1,0 +1,60 @@
+<div class="tamano">
+<div [formGroup]="formulario">
+<div class="container-fluid d-flex justify-content-center">
+    <div class="container m-5">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="d-flex flex-col justify-content-center pb-3">
+                <div class="p-2 w-25">
+                    <h5>FILTROS:</h5>
+                </div>
+                <div class="p-2 w-25">
+                    <div class="input-group flex-nowrap">
+                        <label for="mostrar">Items: </label>
+                        <select id="mostrar" class="form-select" formControlName="mostrar" (change)="cambiarPaginas()">
+                            <option value="3" selected>3</option>
+                            <option value="6">6</option>
+                            <option value="9">9</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-2 w-25">
+                    <div class="input-group flex-nowrap">
+                        <label for="mostrar">Estado: </label>
+                        <select id="estado" class="form-select" formControlName="estado" (change)="ponerFiltroEstado()">
+                            <option value="Todos" selected>Todos</option>
+                            <option value="Abierta">Abierta</option>
+                            <option value="Resolucion">Resolución</option>
+                            <option value="Espera">Espera</option>
+                            <option value="Cerrada">Cerrada</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+               <hr class="mb-5">
+            <table class="table table-primary table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Titulo </th>
+                        <th scope="col">Descripcion </th>
+                        <th scope="col">Creada <i *ngIf="ordenFecha == 0" class="fas fa-caret-down" (click)="ordenarXfecha()"></i><i *ngIf="ordenFecha == 1" class="fas fa-caret-up" (click)="ordenarXfecha()"></i></th>
+                        <th scope="col">Estado <i *ngIf="ordenEstado == 0" class="fas fa-caret-down" (click)="ordenarXestado()"></i><i *ngIf="ordenEstado == 1" class="fas fa-caret-up" (click)="ordenarXestado()"></i></th>
+                        <th scope="col">Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let incidencia of incidencias | paginate: {itemsPerPage:por_paginas, currentPage:page}">
+                        <td>{{incidencia.titulo}}</td>
+                        <td>{{incidencia.descripcion}}</td>
+                        <td>{{incidencia.fecha | date}}</td>
+                        <td>{{incidencia.estado}}</td>
+                        <td><a routerLink="/incidencia/detalle/{{incidencia.idincidencia}}"><img src="./assets/detalle.png" width="20px" height="20px"></a><a routerLink="/incidencia/actualizar/{{incidencia.idincidencia}}"><img src="./assets/update.png" width="20px" height="20px"></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="page=$event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,26 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+h4 {
+    font-family: 'Yaldevi', sans-serif;
+    color: #426275  ;
+}
+
+.input{
+    font-family: 'Yaldevi', sans-serif;
+    color: #202b31  ;
+    border-top: 0;
+    border-left: 0ch;
+    border-right: 0ch;
+    border-bottom: 1px solid #426275;
+    width: 200px;
+}
+label{
+    padding-left:30px;
+    width: 180px;
+    color:#055685;
+}
+
+.obligatorio{
+    color:#dd0000;
+}

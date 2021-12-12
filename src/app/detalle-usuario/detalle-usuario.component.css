@@ -1,0 +1,28 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+.titulo {
+    font-size: 20px;
+    font-family: 'Yaldevi', sans-serif;
+    color: #344e5f ;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Yaldevi', sans-serif;
+    color: #344e5f ;
+    padding-bottom: 15px;
+}
+.rojo {
+    color: #ef340f ;
+}
+
+.verde {
+    color: #0b5f28 ;
+}
+.usuarioActivo {
+    background-color:  #8ad0a2 ;
+}
+.usuarioNoActivo {
+    background-color:  #f58e8b ;
+}

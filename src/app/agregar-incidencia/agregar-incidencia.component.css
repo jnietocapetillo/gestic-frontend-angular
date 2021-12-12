@@ -1,0 +1,33 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+h4{
+    font-family: 'Yaldevi', sans-serif;
+    color: #09293b ;
+    letter-spacing: 5px;
+}
+.dimension{
+    width: 350px;
+}
+
+label{
+    width: 125px;
+    font-family: 'Yaldevi', sans-serif;
+}
+
+.fondo{
+    background-color: rgb(220, 230, 230);
+}
+p{
+    font-family: 'Yaldevi', sans-serif;
+    color:rgb(85, 11, 13);
+}
+.obligatorio{
+    color:rgb(155, 6, 6);
+}
+
+.textoImagen{
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 16px;
+    color:rgb(13, 68, 29);
+}

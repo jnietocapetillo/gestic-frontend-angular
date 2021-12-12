@@ -1,0 +1,62 @@
+<div class="container contenido my-3">
+    <div class="d-flex justify-content-start mb-3">
+        <img src="./assets/logo_email.png" width="100px" height="81px" alt="">
+    </div>
+    <div class="card shadow p-3 mb-3 bg-body rounded">
+        <h5 class="card-header bg-dark text-light">Correo Electrónico</h5>
+        <div class="card-body">
+            <form [formGroup]="formularioEmail" (submit)="enviar()">
+            <div class="d-flex flex-row h-50">
+                <div class="p-2 col-2">
+                    <label for="de">De:</label>
+                </div>
+                <div class="p-2 col-8">
+                    <input type="text" class="form-control" name="de" id="de" formControlName="de">
+                </div>
+            </div>
+            <div class="d-flex flex-row align-content-center h-50">
+                <div class="p-2 col-2">
+                    <label for="para">Para:</label>
+                </div>
+                <div class="p-2 col-8">
+                    <select class="form-select" aria-label="Default select example" name="para" id="para" formControlName="para" (change)="agregarDestinatario()">
+                        <option *ngFor="let usuario of usuarios" value="{{usuario.email}}">{{usuario.nombre}} {{usuario.apellidos}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex flex-row py-2">
+                <div class="p-2 col-2">
+                    <label for="correos">Destinatarios:</label>
+                </div>
+                <div class="p-2 col-8">
+                    <textarea class="form-control" name="correos" id="correos" formControlName="correos" cols="100" rows="1"></textarea>
+                </div>
+            </div><hr>
+            <div class="d-flex flex-row py-2">
+                <div class="p-2 col-2">
+                    <label for="correos">Asunto:</label>
+                </div>
+                <div class="p-2 col-8">
+                    <input type="text" class="form-control" name="asunto" id="asunto" formControlName="asunto" >
+                </div>
+            </div><hr>
+            <div class="d-flex flex-column align-content-center">
+                <div class="p-2">
+                    <label for="de">Mensaje:</label>
+                </div>
+                <div class="p-2">
+                    <ckeditor [editor]="Editor" formControlName="mensaje"></ckeditor>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+                <button type="submit" class="btn btn-success w-25">Enviar</button>
+            </div>
+            </form>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="p-2">
+            <a routerLink="/escritorio"><img src="./assets/volver.png" width="30px" height="30px"></a>
+        </div>
+    </div>
+</div>

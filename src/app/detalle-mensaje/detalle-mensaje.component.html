@@ -1,0 +1,45 @@
+<div class="tamano">
+<div class="d-flex justify-content-center my-2">
+    <h3>MENSAJE</h3>
+</div>
+<div class="container mt-3 w-50 fondo">
+<div class="card shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="d-flex flex-column">
+        <div class="p-2">
+            <span class="titulo">Incidencia Asociada: </span><span class="dato">{{mensaje.idincidencia}}</span>
+        </div>
+        <hr>
+        <div class="p-2">
+            <span class="titulo">De: </span><span class="dato">{{usuario_origen}}</span>
+        </div>
+        <hr>
+        <div class="p-2">
+            <span class="titulo">Para: </span><span class="dato">{{usuario_destino}}</span>
+        </div>
+        <hr>
+        <div class="p-2">
+            <span class="titulo">Fecha: </span><span class="dato">{{mensaje.fecha | date:'medium'}}</span>
+        </div>
+        <hr>
+        <div class="p-2">
+            <span class="titulo">Imagen: </span>
+        </div>
+        <div *ngIf="mensaje.imagen!=''" class="p-2">
+            <img src="http://gestic/storage/{{mensaje.imagen}}" width="100px" height="100px">
+        </div>
+        <hr>
+        <div class="p-2">
+            <span class="titulo">Descripción: </span>
+        </div>
+        <div class="p-2">
+            <textarea class="form-control" name="descripcion" id="descripcion" cols="25" rows="5">{{mensaje.descripcion}}</textarea>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="p-2">
+            <a routerLink="/incidencia/detalle/{{idincidencia}}"><img src="./assets/volver.png" width="30px" height="30px"></a>
+        </div>
+    </div>
+</div>
+</div>
+</div>

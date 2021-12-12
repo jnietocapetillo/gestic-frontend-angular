@@ -1,0 +1,38 @@
+<div class="tamano">
+    <!-- Departamentos -->
+    <div class="container w-50 d-flex justify-content-center">
+        <div class="card text-dark bg-light my-5" style="max-width: 70rem;">
+            <div class="titulo">DEPARTAMENTOS</div>
+            <div class="card-body">
+                <form [formGroup]="formAgregarDepartamento" (ngSubmit)="agregarDepartamento()" novalidate>
+                    <h4>Agregar nuevo Departamento:</h4>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="nombre" class="font-weight-light">Nombre <span class="obligatorio"> * </span>: </label>   
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control dimension" name="departamento" id="departamento" formControlName="departamento" [ngClass]="{'is-invalid':!formAgregarDepartamento.get('departamento')?.valid}">
+                            <div class="invalid-feedback">El campo es requerido y no debe tener digitos</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center pt-3">
+                        <button class="btn btn-dark" type="submit" [disabled] = "formAgregarDepartamento.invalid">Agregar</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center pb-3">
+                <div class="p-2">
+                    <table class="table table-success table-striped">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                        </tr>
+                        <tr *ngFor="let departamento of lista_departamentos">
+                            <td>{{departamento.nombre}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

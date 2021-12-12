@@ -1,0 +1,79 @@
+
+<div class="container d-flex justify-content-center">
+<div class="container m-5">
+  <form [formGroup]="formularioLogin" (ngSubmit)="recogerDatos()" novalidate>
+    <div class="d-flex flex-row justify-content-center pt-5 pb-3">
+        <div class="p-2">
+            <img src="./assets/inicio.png" width="200px" height="200px" alt="">
+        </div>   
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="p-2">
+            <h4>INICIO SESION</h4>
+        </div>
+    </div>
+    <div *ngIf="usuario_no_activo == false" class="d-flex flex-row justify-content-center">
+        <div class="p-2">
+            <h5>USUARIO NO ACTIVO</h5>
+        </div>
+</div>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="p-2 w-50">
+        
+            <div class="input-group flex-wrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="far fa-envelope"></i></span>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="Email ID" aria-label="Username"
+                aria-describedby="addon-wrapping" [ngClass]="{'is-invalid':!formularioLogin.get('email')?.valid}">
+                
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center pb-3">
+        <div class="p-2 w-50">
+            <div class="input-group flex-wrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="fas fa-lock"></i></span>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="Password" 
+                aria-describedby="addon-wrapping" [ngClass]="{'is-invalid':!formularioLogin.get('password')?.valid}">
+                <div class="invalid-feedback">Password no cumple los requisitos</div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+            <div class="p-2">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="recordar" name="recordar" formControlName="recordar">
+                    <label class="form-check-label letra" for="recordar">Recuérdame</label>
+                </div>
+            </div>
+            <div class="p-2">
+                <a routerLink="/recordar" ><span class="letra">¿Olvidó su contraseña?</span></a>
+            </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="p-2">
+            <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"></ngx-recaptcha2> 
+           <br>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="p-2">
+            <a routerLink='/usuario/add'><img src="./assets/addUsuario.png" width="20px" height="25px" class="cursor"> Date de alta</a>
+        </div>
+        <div class="p-2">
+            <img src="./assets/logoGoogle.png" width="30px" height="32px" alt="" class="cursor" (click)="signInWithGoogle()">
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center mt-1">
+         <div class="p-2 w-50 pb-5">
+            <button type="submit" class="btn btn-secondary w-100 boton" [disabled] = "formularioLogin.invalid">LOGIN</button>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="p-2">
+            <a routerLink="/reset"><img src="./assets/update.png" width="20px" height="20px" class="cursor"><span class="letraReset"> Restablecer Contraseña</span></a>
+        </div>
+    </div>
+    </form>
+</div>
+</div>
+

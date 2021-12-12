@@ -1,0 +1,42 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+.dimension {
+    width: 250px;
+}
+label{
+    width: 150px;
+    font-family: 'Yaldevi', sans-serif;
+}
+
+hr {
+    width: 100%;
+    height: 2px;
+    color: rgb(64, 64, 65);
+}
+
+.titulo{
+    font-size: 25px;
+    font-family: 'Yaldevi', sans-serif;
+    color: aliceblue;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(64, 64, 65);
+    background-color: rgb(64, 64, 65) ;
+
+}
+.obligatorio{
+    color:rgb(163, 18, 8);
+}
+
+p{
+    font-family: 'Yaldevi', sans-serif;
+    font-size: 14px;
+    margin-left: 10px;
+    color:rgb(163, 18, 8);
+}
+
+.cabecera {
+    background: rgb(134,134,138);
+    background: linear-gradient(90deg, rgba(134,134,138,1) 8%, rgba(131,144,177,1) 42%, rgba(116,116,122,0.9191877434567577) 100%);
+}

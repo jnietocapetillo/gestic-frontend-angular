@@ -1,0 +1,94 @@
+<div class="tamano">
+<div [formGroup]="formFiltros">
+<div class="container-fluid my-5" id="imprimir">
+<div class="card shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="d-flex mb-5 justify-content-center">
+        <h4>LISTADO USUARIOS DEL SISTEMA</h4>
+    </div>
+    <div class="d-flex flex-row justify-content-center mb-5">
+        <div class="p-2">
+            <h5>Filtros</h5>
+        </div>
+        <div class="p-2">
+            <label for="mostrar">Mostrar:</label>
+        </div>
+        <div class="p-2">
+            <select class="form-select" name="mostrar" id="mostrar" formControlName="mostrar" (change)="cambiarPaginas()">
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="9">9</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+        <div class="p-2">
+            <label for="activo">Estado:</label>
+        </div>
+        <div class="p-2">
+            <select class="form-select" name="estado" id="estado" (change)="ponerFiltroEstado();" formControlName="estado">
+                <option value="todos">Todos</option>
+                <option value="0">No activo</option>
+                <option value="1">Activo</option>
+            </select>
+        </div>
+        <div class="p-2">
+            <label for="departamento">Departamento:</label>
+        </div>
+        <div class="p-2">
+            <select class="form-select" name="departamento" id="departamento" (change)="ponerFiltroDepartamento();" formControlName="departamento">
+            <option value="todos">Todos</option>
+            <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">{{departamento.nombre}}</option>
+            </select>
+        </div>
+        <div class="p-2">
+            <label for="perfil">Perfil:</label>
+        </div>
+        <div class="p-2">
+            <select class="form-select" name="perfil" id="perfil" (change)="ponerFiltroPerfil();" formControlName="perfil">
+            <option value="todos">Todos</option>
+            <option *ngFor="let perfil of perfiles" value="{{perfil.id}}">{{perfil.nombre}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="d-flex flex-column">
+        <table class="table table-info">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre <i *ngIf="ordenNombre == 0" class="fas fa-caret-down" (click)="ordenarXnombre()"></i><i *ngIf="ordenNombre == 1" class="fas fa-caret-up" (click)="ordenarXnombre()"></i></th>
+                <th scope="col">Apellidos <i *ngIf="ordenApellidos == 0" class="fas fa-caret-down" (click)="ordenarXapellidos()"></i><i *ngIf="ordenApellidos == 1" class="fas fa-caret-up" (click)="ordenarXapellidos()"></i></th>
+                <th scope="col">Email</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Alta <i *ngIf="ordenFecha == 0" class="fas fa-caret-down" (click)="ordenarXfecha()"></i><i *ngIf="ordenFecha == 1" class="fas fa-caret-up" (click)="ordenarXfecha()"></i></th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Acciones </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios | paginate: {itemsPerPage:por_paginas, currentPage:page}">
+                    <td>{{usuario.idusuario}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellidos}}</td> 
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.dni}}</td>
+                    <td>{{usuario.movil}}</td>
+                    <td>{{usuario.nombrePerfil}}</td>
+                    <td>{{usuario.nombreDepartamento}}</td>
+                    <td>{{usuario.created_at | date:'medium'}}</td>
+                    <td><img src="http://gestic/storage/{{usuario.avatar}}" width="40px" height="40px"></td>
+                    <td *ngIf="usuario.activo == 0" class="justificar"><img src="./assets/noActivo.png" width="20px" height="20px"></td>
+                    <td *ngIf="usuario.activo == 1" class="justificar"><img src="./assets/activo.png" width="20px" height="20px"></td>
+                    <td *ngIf="usuario.activo ==  1 "><img src="./assets/desactivar.png" width="30px" height="30px" class="cursor" (click)="desactivarUsuario(usuario.idusuario)"></td>
+                    <td *ngIf="usuario.activo == 0"></td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="page=$event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>
+</div>
+</div>
+</div>

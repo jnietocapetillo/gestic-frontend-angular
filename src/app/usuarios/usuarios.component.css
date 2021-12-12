@@ -1,0 +1,23 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+h1{
+    font-family: 'Yaldevi', sans-serif;
+    color: #426275  ;
+    letter-spacing: 5px;
+}
+
+h5{
+    font-family: 'Yaldevi', sans-serif;
+    color: #426275 ;
+    letter-spacing: 5px;
+}
+
+.contenedor{
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.cursor{
+    cursor: pointer;
+}

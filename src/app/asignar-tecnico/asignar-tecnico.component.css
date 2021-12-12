@@ -1,0 +1,37 @@
+.tamano{
+    min-height: calc(100vh - 100px - 300px);
+}
+
+label{
+    font-family: 'Yaldevi', sans-serif;
+    color: #09293b ;
+    font-size: 18px;
+}
+
+.titulo{
+    padding-bottom: 20px;
+    color:crimson;
+}
+
+.detalle{
+    font-family: 'Yaldevi', sans-serif;
+    color: rgb(45, 48, 56);
+    font-size: 20px;
+}
+
+h4{
+    font-family: 'Yaldevi', sans-serif;
+    color: #094f77 ;
+    width: 150px;
+}
+
+.fondo{
+    background: rgb(226,226,255);
+    background: linear-gradient(90deg, rgba(226,226,255,1) 8%, rgba(209,214,226,1) 42%, rgba(158,158,158,0.9191877434567577) 100%);
+}
+h3{
+    font-family: 'Yaldevi', sans-serif;
+    color: #09293b ;
+    text-align: center;
+    padding-bottom: 10px;
+}

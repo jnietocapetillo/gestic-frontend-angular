@@ -1,0 +1,99 @@
+<div class="tamano">
+<form [formGroup]="formAddIncidencia" (ngSubmit)="addIncidencia()" novalidate>
+<div class="container-fluid d-flex justify-content-center mt-3 mb-3">
+    <div class="d-flex flex-row align-items-center">
+        <div class="p-2">
+            <img src="./assets/incidencia.png" width="53px" height="46px">
+        </div>
+        <div class="p-2">
+            <h4>NUEVA INCIDENCIA</h4>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mb-3">
+    <div class="d-flex flex-row justify-content-center">
+        <div class="card">
+            <div class="card-header">
+            <p>Nota: La incidencia se comunicará al administrador para ser asignada. Recibirá una notificación con los cambios de su incidencia.</p>
+            </div>
+            <div class="card-body fondo">
+                <div class="d-flex flex-column">
+                    <div class="p-2">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="titulo" class="font-weight-light">Titulo <span class="obligatorio"> * </span>:</label>   
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="titulo" id="titulo" formControlName="titulo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="usuario" class="font-weight-light">Departamento <span class="obligatorio"> * </span>:</label>   
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="ubicacion" id="ubicacion" formControlName="departamento">
+                                <input type="hidden" class="form-control dimension" name="iddepartamento" id="iddepartamento" formControlName="iddepartamento">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto" >
+                                <label for="estado" class="font-weight-light">Estado: </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="estado_mostrar" id="estado_mostrar" formControlName="estado_mostrar">
+                                <input type="hidden" class="form-control dimension" name="estado" id="estado" formControlName="estado">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="usuario" class="font-weight-light">Fecha:</label>   
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="usuario" id="usuario" formControlName="fecha">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row"> 
+                    <div class="p-2">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label>Técnico: </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="tecnico" id="tecnico" placeholder="Será asignado por el Administrador" disabled>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="p-2">
+                        <label>Descripción <span class="obligatorio"> * </span>:</label>
+                    </div>
+                    <div class="p-2">
+                        <ckeditor [editor]="Editor" formControlName="descripcion"></ckeditor>
+                    </div>
+                    <div class="p-2">
+                        <label for="imagen" class="form-label textoImagen">Adjuntar imagen:</label>
+                        <input class="form-control form-control-lg" name="imagen" id="imagen" type="file" accept="image/*" (change)="subirImagen($event)" formControlName="imagen">
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-center mt-3 mb-3">
+                    <button type="submit" class="btn btn-success w-50" [disabled] = "formAddIncidencia.invalid">Insertar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</form>
+</div>

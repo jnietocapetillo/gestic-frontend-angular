@@ -1,0 +1,40 @@
+.contenedor{
+    border:1px solid #062133;
+}
+
+h4{
+    font-family: 'Yaldevi', sans-serif;
+    color: #09293b ;
+    letter-spacing: 5px;
+}
+
+h5{
+    font-family: 'Yaldevi', sans-serif;
+    color: #920505 ;
+    letter-spacing: 5px;
+}
+
+.letra{
+    font-family: 'Yaldevi', sans-serif;
+    color: #09293b ;
+}
+.letraReset{
+    font-family: 'Yaldevi', sans-serif;
+    color: #333344 ;
+}
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: #062133 ;
+}
+.boton{
+    font-family: 'Yaldevi', sans-serif;
+    color: #ebf2f6 ;
+    letter-spacing: 10px;
+    background-color:  #215f87;
+}
+.cursor{
+    cursor:pointer;
+}

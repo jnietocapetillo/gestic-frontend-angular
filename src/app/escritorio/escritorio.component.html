@@ -1,0 +1,77 @@
+<div class="tamano">
+<div class="container mt-5">
+    <div class="d-flex flex-column">
+        <div class="p-2 d-flex justify-content-center">
+            <h1>BIENVENIDO</h1>
+        </div>
+        <div class="p-2 d-flex justify-content-center">
+            <h5>{{ usuarioInyectado.usuario.nombre}} {{usuarioInyectado.usuario.apellidos}}</h5>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="usuarioInyectado.usuario.idPerfil == 1">
+  <div class="container mt-5 mb-5">
+    <div class="card border">
+      <div class="card-header d-flex justify-content-center">
+          <h5>Notificaciones</h5>
+      </div>
+      <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Leido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mensaje of mensajes; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{mensaje.descripcion}}</td>
+                <td>{{mensaje.fecha}}</td>
+                <td>{{mensaje.nombre_origen}}</td>
+                <td *ngIf="mensaje.descripcion !='Usuario dado de alta e inactivo. Revisar.'"><button type="button" class="btn btn-success" id="leido" (click)="asignarTecnico(mensaje)">Asignar</button></td>
+                <td *ngIf="mensaje.descripcion =='Usuario dado de alta e inactivo. Revisar.'"><button type="button" class="btn btn-dark" id="activar" (click)="activarUsuario(mensaje.idmensaje, mensaje)">Activar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="usuarioInyectado.usuario.idPerfil != 1">
+  <div class="container mt-5 mb-5">
+    <div class="card border">
+      <div class="card-header d-flex justify-content-center">
+          <h5>Notificaciones</h5>
+      </div>
+      <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Incidencia</th>
+                <th scope="col">Leido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mensaje of mensajes; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{mensaje.descripcion}}</td>
+                <td>{{mensaje.fecha}}</td>
+                <td>{{mensaje.idusuario_origen}}</td>
+                <td><input type="checkbox" class="control-form" id="leido" (change)="marcarLeido(mensaje.idmensaje, mensaje)"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,77 @@
+<div class="tamano">
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h5>{{ incidenciaUsuario.titulo }}</h5>
+        </div>
+        <div class="card-body body">
+            <div *ngIf= " incidenciaUsuario.imagen != ''" class="d-flex flex-row">
+                <div class="p-2">
+                    <img src="http://gestic/storage/{{incidenciaUsuario.imagen}}" alt="" width="50px" height="50px">
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center cabecera">
+                <div class="p-2 w-25">
+                    <label class="titulo">Fecha: </label><span>{{ incidenciaUsuario.fecha | date:'medium'}}</span>
+                </div>
+                <div class="p-2 w-25">
+                    <label class="titulo">Estado: </label><span>{{ incidenciaUsuario.estado }}</span>
+                </div>
+                <div class="p-2 w-25">
+                    <label class="titulo">Técnico Asignado: </label><span>{{ nombreTecnico }}</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-center medio">
+                <div class="p-2 w-25">
+                    <label class="titulo">Prioridad: </label><span>{{ incidenciaUsuario.prioridad }}</span>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-column bajo">
+                <div class="p-2">
+                    <label class="descripcion">Descripción:</label>
+                </div>
+                <div class="p-2">
+                    <textarea class="w-100" rows="5">{{ incidenciaUsuario.descripcion }}</textarea>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-column">
+                <div class="p-2 w-100">
+                    <h5>Mensajes asociados:</h5>
+                </div>
+                <div class="p-2 w-100">
+                    <table class="table table-warning">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">De</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let mensaje of mensajes">
+                                <td>{{mensaje.fecha | date:'medium'}}</td>
+                                <td>{{mensaje.nombre_origen}}</td>
+                                <td>{{mensaje.descripcion}}</td>
+                                <td><a routerLink="/detalle-mensaje/{{mensaje.idmensaje}}"><img src="./assets/detalle.png" width="30px" height="30px"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="p-2">
+                <a routerLink="/mensaje/incidencia/{{incidenciaUsuario.idincidencia}}"><button type="button" class="btn btn-dark">Agregar Mensaje</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="p-2">
+            <a routerLink="/incidencias"><img src="./assets/volver.png" width="30px" height="30px"></a>
+        </div>
+    </div>
+</div>
+</div>

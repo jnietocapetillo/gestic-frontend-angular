@@ -1,0 +1,73 @@
+<div class="tamano">
+<div class="container my-3 w-50">
+<div class="card shadow p-3 mb-3 bg-body rounded fondo">
+    <h3>I N C I D E N C I A</h3>
+    <form [formGroup]="formAsignarTecnico" (ngSubmit)="asignar()" novalidate>
+        <div class="d-flex flex-row align-items-center">
+            <div class="p-2">
+                <h4>Titulo: </h4>
+            </div>
+            <div class="p 2">
+                <h5 class="detalle">{{incidencia.titulo}}</h5>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+            <div class="p-2">
+                <h4>Descripción: </h4>
+            </div>
+            <div class="p-2">
+                <h5 class="detalle">{{incidencia.descripcion}}</h5>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+            <div class="p-2">
+                <h4>Usuario: </h4>
+            </div>
+            <div class="p-2">
+                <h5 class="detalle">{{usuario}}</h5>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+            <div class="p-2">
+                <h4>Abierta: </h4>
+            </div>
+            <div class="p-2">
+                <h5 class="detalle">{{incidencia.fecha}}</h5>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="p-2">
+                <div class="d-flex flex-column justify-content-center pt-5">
+                    <div class="p-2">
+                        <label for="tecnico">Técnico</label>
+                    </div>
+                    <div class="p-2">
+                        <select class="form-select" name="tecnico" id="tecnico" formControlName="tecnico" [ngClass]="{'is-invalid':!formAsignarTecnico.get('tecnico')?.valid}">
+                            <option *ngFor="let tecnico of tecnicos" value={{tecnico.idusuario}}>{{tecnico.nombre}} {{tecnico.apellidos}}</option>
+                        </select>
+                        <div class="invalid-feedback">Debe seleccionar un técnico</div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                <div class="d-flex flex-column justify-content-center pt-5">
+                    <div class="p-2">
+                        <label for="tecnico">Prioridad</label>
+                    </div>
+                    <div class="p-2">
+                        <select class="form-select" name="prioridad" id="prioridad" formControlName="prioridad" [ngClass]="{'is-invalid':!formAsignarTecnico.get('prioridad')?.valid}">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+                        <div class="invalid-feedback">Debe seleccionar una prioridad</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-center mt-3 mb-3 pt-3">
+            <button type="submit" class="btn btn-dark w-25" [disabled] = "formAsignarTecnico.invalid">Aplicar</button>
+        </div>
+    </form>
+</div>
+
+</div>
+</div>

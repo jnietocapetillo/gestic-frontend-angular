@@ -1,0 +1,38 @@
+<div class="tamano">
+    <!-- Perfiles -->
+    <div class="container w-50 d-flex justify-content-center">
+            <div class="card my-5" style="max-width: 70rem;">
+                <div class="titulo">PERFILES</div>
+                <div class="card-body">
+                    <form [formGroup]="formAgregarPerfil" (ngSubmit)="agregarPerfil()" novalidate>
+                        <h4>Agregar nuevo Perfil:</h4>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="nombre" class="font-weight-light">Nombre <span class="obligatorio"> * </span>: </label>   
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control dimension" name="perfil" id="perfil" formControlName="perfil" [ngClass]="{'is-invalid':!formAgregarPerfil.get('perfil')?.valid}">
+                                <div class="invalid-feedback">El campo es requerido y no debe tener digitos</div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-dark" type="submit" [disabled] = "formAgregarPerfil.invalid">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center pt-3">
+                    <div class="p-2">
+                        <table class="table table-success table-striped">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                            </tr>
+                             <tr *ngFor="let perfil of lista_perfiles">
+                                <td>{{perfil.nombre}}</td>
+                            </tr>
+                        </table>
+                    </div> 
+                </div>
+            </div>
+    </div>
+</div>

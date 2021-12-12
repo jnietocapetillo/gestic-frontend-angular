@@ -1,0 +1,84 @@
+<div class="tamano">
+<div [formGroup]="formulario">
+<div class="container-fluid d-flex justify-content-center" id="imprimir">
+    <div class="container m-5">
+        <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="d-flex flex-col justify-content-center pb-3">
+                <div class="p-2 w-25">
+                    <h5>FILTROS:</h5>
+                </div>
+                <div class="p-2 w-25">
+                    <div class="input-group flex-nowrap">
+                        <label for="mostrar">Items: </label>
+                        <select id="mostrar" class="form-select" formControlName="mostrar" (change)="cambiarPaginas()">
+                            <option value="3" selected>3</option>
+                            <option value="6">6</option>
+                            <option value="9">9</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-2 w-25">
+                    <div class="input-group flex-nowrap">
+                        <label for="mostrar">Técnicos: </label>
+                        <select id="xtecnico" class="form-select" formControlName="xtecnico" (change)="ponerFiltroTecnico();">
+                            <option value="Técnicos" selected>Técnicos</option>
+                            <option value="Todos">Todos</option>
+                            <option [value]="tecnico" *ngFor="let tecnico of listaTecnicos">{{tecnico}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-2 w-25">
+                    <div class="input-group flex-nowrap">
+                        <label for="mostrar">Estado: </label>
+                        <select id="estado" class="form-select" formControlName="estado" (change)="ponerFiltroEstado()">
+                            <option value="Todos" selected>Todos</option>
+                            <option value="Abierta">Abierta</option>
+                            <option value="Resolucion">Resolución</option>
+                            <option value="Espera">Espera</option>
+                            <option value="Cerrada">Cerrada</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+               <hr class="mb-5">
+            <table class="table table-primary table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Titulo <i *ngIf="ordenTitulo == 0" class="fas fa-caret-down" (click)="ordenarXtitulo()"></i><i *ngIf="ordenTitulo == 1" class="fas fa-caret-up" (click)="ordenarXtitulo()"></i></th>
+                        <th scope="col">Creada <i *ngIf="ordenCreada == 0" class="fas fa-caret-down" (click)="ordenarXcreada()"></i><i *ngIf="ordenCreada == 1" class="fas fa-caret-up" (click)="ordenarXcreada()"></i></th>
+                        <th scope="col">Técnico <i *ngIf="ordenTecnico == 0" class="fas fa-caret-down" (click)="ordenarXtecnico()"></i><i *ngIf="ordenTecnico == 1" class="fas fa-caret-up" (click)="ordenarXtecnico()"></i></th>
+                        <th scope="col">Estado </th>
+                        <th scope="col">Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let incidencia of incidencias | paginate: {itemsPerPage:por_paginas, currentPage:page}">
+                        <td >{{incidencia.titulo}}</td>
+                        <td>{{incidencia.fecha | date}}</td>
+                        <td>{{incidencia.tecnico_asignado}}</td>
+                        <td>{{incidencia.estado}}</td>
+                        <td *ngIf="usuarioInyectado.usuario.idPerfil == 1"><a routerLink="/incidencia/detalle/{{incidencia.idincidencia}}"><img src="./assets/detalle.png" width="20px" height="20px"></a>
+                            <a routerLink="/incidencia/actualizar/{{incidencia.idincidencia}}"><img src="./assets/update.png" width="20px" height="20px"></a>
+                            <img class="cursor" src="./assets/delete.png" width="20px" height="20px" (click)="deleteIncidencia(incidencia.idincidencia)">
+                        </td>
+                        <td *ngIf="usuarioInyectado.usuario.idPerfil != 1"><a routerLink="/incidencia/detalle/{{incidencia.idincidencia}}"><img src="./assets/detalle.png" width="20px" height="20px"></a>
+                            <a routerLink="/incidencia/actualizar/{{incidencia.idincidencia}}"><img src="./assets/update.png" width="20px" height="20px"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="page=$event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-item-center">
+            <div class="p-2">
+                <a href="http://gestic/incidencias/excel"><img src="./assets/excel.jpg" width="50px" height="50px"></a>
+            </div>
+            <div class="p-2">
+                <img class="cursor" src="./assets/pdf.png" width="40px" height="47px" (click)="crearPdf()">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
